@@ -24,7 +24,8 @@ def index(request):
 @csrf_exempt
 @login_required
 def compose(request):
-    return JsonResponse({"message": "hello"})
+    return JsonResponse({"message": "Response from compose view."})
+
     # Composing a new email must be via POST
     if request.method != "POST":
         return JsonResponse({"error": "POST request required."}, status=400)
@@ -74,6 +75,7 @@ def compose(request):
 
 @login_required
 def mailbox(request, mailbox):
+    return JsonResponse({"message": f"Response for {mailbox}"})
 
     # Filter emails returned based on mailbox
     if mailbox == "inbox":
